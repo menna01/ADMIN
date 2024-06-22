@@ -1,0 +1,59 @@
+<div class="alert alert-info row">
+  <table
+    class="table table-active table-bordered align-middle col-8"
+    style="text-align: center"
+  >
+    <caption
+      class="caption-top"
+      style="
+        text-align: center;
+        font-size: 25px;
+        color: black;
+        font-weight: bold;
+      "
+    >
+      List of orders
+    </caption>
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Order Status</th>
+        <th>Order Date</th>
+        <th>Order Requester Id</th>
+        <th>Total Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-active" *ngFor="let o of orders">
+        <td>
+          <a
+            routerLink="/orders/{{ o.orderId }}"
+            style="text-decoration: none"
+            >{{ o.orderId }}</a
+          >
+        </td>
+        <td>{{ getStatusString(o.orderStatus) }}</td>
+        <td>{{ o.orderDate | date : "yyyy-MM-dd" }}</td>
+        <td>
+          <a routerLink="/users/{{ o.userId }}" style="text-decoration: none">{{
+            o.userId
+          }}</a>
+        </td>
+        <td>{{ o.totalPrice }}</td>
+
+        <td>
+          <a
+            routerLink="/editOrder/{{ o.orderId }}"
+            class="btn btn-outline-primary"
+            >Edit</a
+          >
+        </td>
+        <td (click)="delete(o.orderId)">
+          <a class="btn btn-outline-dark">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
