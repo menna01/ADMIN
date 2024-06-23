@@ -13,19 +13,11 @@ export interface CategoryCount {
 })
 export class AdminService {
   constructor(private myClient: HttpClient) {}
-  // private baseURL = 'http://localhost:3000';
-  // private productURL = 'http://localhost:3000/product';
-  // private orderURL = 'http://localhost:3000/order';
-  // private userURL = 'http://localhost:3000/user';
-  // private categoryURL = 'http://localhost:3000/category';
-  private baseURL = 'https://abilitysystem.azurewebsites.net/api';
-  //private productURL = 'https://eco-back-9qg1.onrender.com/product';
-  private productURL = 'https://abilitysystem.azurewebsites.net/api/Product';
-  private orderURL = 'https://abilitysystem.azurewebsites.net/api/Orders';
-  //private userURL = 'https://eco-back-9qg1.onrender.com/user';
-  private userURL = 'https://abilitysystem.azurewebsites.net/api/User';
-  // private categoryURL = 'https://eco-back-9qg1.onrender.com/category';
-  private categoryURL = 'https://abilitysystem.azurewebsites.net/api/Category';
+  private baseURL = 'https://localhost:7032/api';
+  private productURL = 'https://localhost:7032/api/Product';
+  private orderURL = 'https://localhost:7032/api/Orders';
+  private userURL = 'https://localhost:7032/api/User';
+  private categoryURL = 'https://localhost:7032/api/Category';
 
   //Methods
 
