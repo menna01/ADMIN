@@ -51,9 +51,9 @@
                 Enter password
               </p>
               <button
-                class="showPass"
+                class="showPass position-relative "
                 ngClass="{'hide': {{ !showLog }}, 'show': {{ showLog }}}"
-                (click)="passwordLog()"><fa-icon [icon]="showLog ? faEyeSlash : faEye"></fa-icon>
+                (click)="passwordLog()"><fa-icon style="bottom: 4px;" class="position-absolute" [icon]="showLog ? faEyeSlash : faEye"></fa-icon>
               </button>
             </div>
             <div class="form__field">
