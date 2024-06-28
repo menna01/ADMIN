@@ -153,10 +153,10 @@ export class DashboardComponent implements OnInit {
       this.femalesCount !== undefined
     ) {
       this.chartDoughnutData = {
-        labels: ['Males', 'Females'],
+        labels: ['Individuals', 'Organizations'],
         datasets: [
           {
-            backgroundColor: ['#00D8FF', '#DC3545'],
+            backgroundColor: ['#0000ff', '#d51c1c'],
             data: [this.malesCount, this.femalesCount],
           },
         ],
@@ -175,8 +175,8 @@ export class DashboardComponent implements OnInit {
         datasets: [
           {
             data: [this.productsCount, this.usersCount, this.ordersCount],
-            backgroundColor: ['#F87979', '#36A2EB', '#FFCE56'],
-            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            backgroundColor: ['#36A2EB', '#72821D', '#FFCE56'],
+            hoverBackgroundColor: ['#36A2EB', '#72821D', '#FFCE56'],
           },
         ],
       };
@@ -223,7 +223,7 @@ export class DashboardComponent implements OnInit {
               datasets: [
                 {
                   label: 'Product Counts',
-                  backgroundColor: '#f87979',
+                  backgroundColor: '#000000',
                   data,
                 },
               ],

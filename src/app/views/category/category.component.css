@@ -10,8 +10,8 @@ tr:nth-of-type(odd) {
 	}
 
 th {
-	background: #447093;
-	color: white;
+	background: white;
+	color: black;
 	font-weight: bold;
 	}
 

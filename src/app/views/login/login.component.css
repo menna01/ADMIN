@@ -85,10 +85,12 @@ a {
 }
 
 .register {
+    background-color: rgb(237, 230, 230);
     box-shadow: 0 0 20px #000;
     text-align: center;
     padding: 3.5rem 2rem;
-    margin-top: 100px;
+    position: absolute;
+    /* margin-top: 100px; */
 }
 
 .register input {
@@ -117,18 +119,19 @@ a {
 .register input[type=email]:focus,
 .register input[type=password]:focus,
 .register input[type=text]:focus {
-    border: 1px solid  #184461;
+    border: 1px solid  #fb8500;
     transition: all 0.5s linear;
 }
 
 .register input[type=submit] {
-    background-color:  #184461;
+    background-color:  #fb8500;
     color: #fff;
     margin-bottom: 1rem;
     width: 100%;
 }
+
 .register input[type=submit].disabled {
-    background-color:  #184461;
+    background-color: #fb8500;
 }
 .form-block{
     background-color: white;
@@ -242,3 +245,14 @@ h2{
         transform: translate(90px,-60px);
     }
 }
+
+.all{
+   
+     height: 100vh; 
+   
+   background-image: url('cycling.jpg');
+   background-position: center center;
+   background-size: cover; 
+   
+ }  
+

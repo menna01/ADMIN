@@ -1,4 +1,4 @@
-<c-row>
+<c-row class="bg-light border border-2 shadow-lg m-4">
   <c-col xs>
     <c-card class="mb-4">
       <c-card-header>Products {{ "&" }} Users</c-card-header>
@@ -6,27 +6,31 @@
         <c-row>
           <c-col md="6" xl="6" xs="12">
             <c-row>
+              <!-- class="border-start border-start-4 border-start-info py-1 px-3 mb-3" -->
+
               <c-col sm="6">
-                <div
-                  class="border-start border-start-4 border-start-info py-1 px-3 mb-3"
-                >
-                  <div class="text-medium-emphasis small">Products</div>
-                  <div class="fs-5 fw-semibold">{{ productsCount }}</div>
+                <div class="bg-info  text-center p-3">
+                 <h3>Products</h3>
+                 <h3>{{ productsCount }}</h3>
                 </div>
               </c-col>
               <c-col sm="6">
-                <div
+                <div class="bg-secondary  text-center p-3">
+                  <h3>Orders</h3>
+                  <h3>{{ ordersCount }}</h3>
+                 </div>
+                <!-- <div
                   class="border-start border-start-4 border-start-secondary py-1 px-3 mb-3"
                 >
                   <div class="text-medium-emphasis small">Orders</div>
                   <div class="fs-5 fw-semibold">{{ ordersCount }}</div>
-                </div>
+                </div> -->
               </c-col>
             </c-row>
 
-            <hr class="mt-0" />
+            <hr class="m-4" />
 
-            <div *ngFor="let category of categories">
+            <!-- <div *ngFor="let category of categories">
               <div class="progress-group">
                 <div class="progress-group-header">
                   <svg cIcon class="icon icon-lg me-2" name="cilUser"></svg>
@@ -37,6 +41,10 @@
                     </span>
                   </span>
                 </div>
+
+
+
+
                 <div class="progress-group-bars">
                   <c-progress thin>
                     <c-progress-bar
@@ -46,7 +54,13 @@
                   </c-progress>
                 </div>
               </div>
-            </div>
+            </div> -->
+
+
+
+
+
+            
 
             <div class="progress-group mb-4">
               <div class="progress-group-header">
@@ -112,20 +126,32 @@
           <c-col md="6" xl="6" xs="12">
             <c-row>
               <c-col sm="6">
-                <div
+
+                <div class="bg-success  text-center p-3">
+                  <h3>Categories</h3>
+                  <h3>{{ categoriesCount }}</h3>
+                 </div>
+
+                 
+                <!-- <div
                   class="border-start border-start-4 border-start-info py-1 px-3 mb-3"
                 >
                   <div class="text-medium-emphasis small">Categories</div>
                   <div class="fs-5 fw-semibold">{{ categoriesCount }}</div>
-                </div>
+                </div> -->
               </c-col>
               <c-col sm="6">
-                <div
+
+                <div class="bg-warning  text-center p-3">
+                  <h3>Users</h3>
+                  <h3>{{ usersCount }}</h3>
+                 </div>
+                <!-- <div
                   class="border-start border-start-4 border-start-warning py-1 px-3 mb-3"
                 >
                   <div class="text-medium-emphasis small">Users</div>
                   <div class="fs-5 fw-semibold">{{ usersCount }}</div>
-                </div>
+                </div> -->
               </c-col>
             </c-row>
 
@@ -134,14 +160,14 @@
             <c-col xs="12" lg="6" class="mx-auto">
               <c-card class="mb-4">
                 <c-card-body>
-                  <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
+                  <c-chart type="bar" [data]="chartDoughnutData"></c-chart>
                 </c-card-body>
               </c-card>
             </c-col>
             <div class="progress-group mb-4">
               <div class="progress-group-header">
                 <svg cIcon class="icon icon-lg me-2" name="cilUser"></svg>
-                <span>Male</span>
+                <span>Individual</span>
                 <span class="ms-auto font-semibold"
                   >{{ ((malesCount / usersCount) * 100).toFixed(0) }}%</span
                 >
@@ -158,7 +184,7 @@
             <div class="progress-group mb-5">
               <div class="progress-group-header">
                 <svg cIcon class="icon icon-lg me-2" name="cilUserFemale"></svg>
-                <span>Female</span>
+                <span>Organization</span>
                 <span class="ms-auto font-semibold"
                   >{{ ((femalesCount / usersCount) * 100).toFixed(0) }} %</span
                 >
@@ -192,21 +218,23 @@
 </c-row>
 
 <!--some charts to choose from them-->
-<c-row>
+<c-row class="bg-light border border-2 shadow-lg m-4">
   <c-col xs="12"> </c-col>
+  <c-col xs="12" lg="4">
+  
+
+    <c-card class="mb-4">
+      <c-card-header> doughnut Chart </c-card-header>
+      <c-card-body>
+        <c-chart type="doughnut" [data]="chartPieData"></c-chart>
+      </c-card-body>
+    </c-card>
+  </c-col>
   <c-col xs="12" lg="8">
     <c-card class="mb-4">
       <c-card-header> Bar Chart </c-card-header>
       <c-card-body>
-        <c-chart type="bar" [data]="chartBarData"></c-chart>
-      </c-card-body>
-    </c-card>
-  </c-col>
-  <c-col xs="12" lg="4">
-    <c-card class="mb-4">
-      <c-card-header> Pie Chart </c-card-header>
-      <c-card-body>
-        <c-chart type="pie" [data]="chartPieData"></c-chart>
+        <c-chart type="line" [data]="chartBarData"></c-chart>
       </c-card-body>
     </c-card>
   </c-col>

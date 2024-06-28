@@ -31,7 +31,7 @@ export class EditProductComponent implements OnInit {
   submitted = false;
   image: any;
   editProductForm: FormGroup;
-  categories: any;
+  categories: any[]=[];
 
   constructor(
     public fb: FormBuilder,
@@ -91,6 +91,8 @@ export class EditProductComponent implements OnInit {
     this.getSelectedCateory(event);
   }
 
+ 
+
   Edit(
     name: any,
     price: any,
@@ -99,7 +101,8 @@ export class EditProductComponent implements OnInit {
     description: any,
     category: any
   ) {
-    category = this.categories.find((obj:any) => obj.categoryName == this.Category).categoryId;
+
+    //  categoryName = this.categories.find((obj:any) => obj.categoryName == this.Category)?.categoryId;
     let product = {
       productId: this.ID,
       name,
@@ -109,12 +112,43 @@ export class EditProductComponent implements OnInit {
       description,
       categoryId: category,
     };
+    localStorage.setItem("name",product.name)
     this.myService.UpdateProductByID(this.ID, product).subscribe(() => {
       this.router.navigate(['/products']);
     });
     //  console.log(this.Category);
   }
-
+  // Edit(
+  //   name: any,
+  //   price: any,
+  //   sale: any,
+  //   quantity: any,
+  //   description: any,
+  //   category: any
+  // ) {
+  //   // Ensure that 'category' is an ID and doesn't need to be looked up again
+  //   let product = {
+  //     productId: this.ID,
+  //     name,
+  //     price,
+  //     sale,
+  //     quantity,
+  //     description,
+  //     categoryId: category, // Directly use the categoryId from the selected option
+  //   };
+  
+  //   // Call the service to update the product by ID
+  //   this.myService.UpdateProductByID(this.ID, product).subscribe(
+  //     () => {
+  //       // Navigate to the products page after a successful update
+  //       this.router.navigate(['/products']);
+  //     },
+  //     error => {
+  //       // Handle any errors here
+  //       console.error('Error updating product:', error);
+  //     }
+  //   );
+  // }
   openFile() {
     document.getElementById('input_file')!.click();
   }

@@ -1,6 +1,30 @@
-<div class="alert alert-info row">
+<div class="row">
+  <div class="">
+    <h2 style="color: black;">Add Category</h2>
+    <div class="d-flex justify-content-start ">
+      <form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+        <div>
+          <label class="col-4 m-3">Category Name</label>
+          <input
+            class="col-5 m-3 rounded-2 border border-2 "
+            type="text"
+            formControlName="categoryName"
+            [(ngModel)]="categoryName"
+          />
+        </div>
+        <div class=" d-flex justify-content-center">
+          <button
+            type="submit"
+            [disabled]="addCategoryForm.invalid"
+            class="btn btn-outline-success ms-5  btn-block  "
+          > Add </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
   <table
-    class="table table-active table-bordered align-middle col-8"
+    class="table-hover table-active table-bordered w-75 align-middle col-8"
     style="text-align: center"
   >
     <caption
@@ -17,7 +41,11 @@
     <thead>
       <tr>
         <th rowspan="2">id</th>
+        <th rowspan="2">image</th>
+
         <th rowspan="2">Category Name</th>
+        <th rowspan="2">description</th>
+    
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
       </tr>
@@ -25,7 +53,10 @@
     <tbody>
       <tr class="table-active" *ngFor="let c of categories">
         <td>{{ c.categoryId }}</td>
+        <td><img [src]="c.categoryImageURL" class="w-75" alt=""></td>
+
         <td>{{ c.categoryName }}</td>
+        <td>{{ c.description }}</td>
         <td>
           <a
             routerLink="/editCategory/{{ c.categoryId }}"
@@ -34,35 +65,10 @@
           >
         </td>
         <td (click)="delete(c.categoryId)">
-          <a class="btn btn-outline-dark">Delete</a>
+          <a class="btn btn-outline-danger">Delete</a>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<div class="text-center m-5">
-  <h2>Add Category</h2>
-  <div class="d-flex justify-content-center m-3">
-    <form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
-      <div>
-        <label class="col-4 m-3">Category Name</label>
-        <input
-          class="col-5 m-3"
-          type="text"
-          formControlName="categoryName"
-          [(ngModel)]="categoryName"
-        />
-      </div>
-      <div>
-        <button
-          type="submit"
-          [disabled]="addCategoryForm.invalid"
-          class="btn btn-outline-primary btn-block btn-lg m-3"
-        >
-          Add
-        </button>
-      </div>
-    </form>
-  </div>
-</div>

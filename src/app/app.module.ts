@@ -1,6 +1,6 @@
 import { NgModule,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
@@ -12,11 +12,13 @@ import { MatInputModule } from '@angular/material/input';
 
 import { Page404Component } from './views/page404/page404.component';
 import { LoginComponent } from './views/login/login.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
   PerfectScrollbarModule,
+ 
 } from 'ngx-perfect-scrollbar';
 
 // Import routing module
@@ -110,6 +112,7 @@ const APP_CONTAINERS = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    BrowserModule,
   ],
   providers: [
     {provide: MatDialogRef, useValue: {}},

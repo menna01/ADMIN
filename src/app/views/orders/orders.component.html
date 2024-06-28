@@ -1,6 +1,6 @@
-<div class="alert alert-info row">
+<div class=" row">
   <table
-    class="table table-active table-bordered align-middle col-8"
+    class="table table-active table-hover table-bordered  align-middle col-8"
     style="text-align: center"
   >
     <caption
@@ -18,6 +18,7 @@
       <tr>
         <th>Order Id</th>
         <th>Order Status</th>
+        <th>IsPaid</th>
         <th>Order Date</th>
         <th>Order Requester Id</th>
         <th>Total Price</th>
@@ -35,6 +36,8 @@
           >
         </td>
         <td>{{ getStatusString(o.orderStatus) }}</td>
+        <td>{{o.isPaid }}</td>
+
         <td>{{ o.orderDate | date : "yyyy-MM-dd" }}</td>
         <td>
           <a routerLink="/users/{{ o.userId }}" style="text-decoration: none">{{
@@ -46,7 +49,7 @@
         <td>
           <a
             routerLink="/editOrder/{{ o.orderId }}"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-success"
             >Edit</a
           >
         </td>

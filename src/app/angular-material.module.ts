@@ -65,7 +65,8 @@ const materialModules = [
   MatGridListModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  CommonModule
 ];
 @NgModule({
   imports: [

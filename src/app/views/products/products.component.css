@@ -10,8 +10,8 @@ tr:nth-of-type(odd) {
 	}
 
 th { 
-	background: #447093; 
-	color: white; 
+	background: white; 
+	color: black; 
 	font-weight: bold; 
 	}
 
@@ -31,9 +31,9 @@ td, th {
 	  .form-control {
 		box-shadow: 0 10px 40px 0 #B0C1D9;
 	  }
-	  .form-control::placeholder  {
-		font-family: FontAwesome;
-	  }
+	  /* .form-control::placeholder  {
+		font-family: ;
+	  } */
 
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -87,4 +87,10 @@ only screen and (max-width: 1398px),
 		font-weight: bold;
 	}
 
+}
+
+
+
+.bg{
+	background-color: #ffd60a;
 }

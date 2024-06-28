@@ -1,14 +1,14 @@
-<div class="alert alert-info row">
-  <div class="row">
+<div class=" bg-white row">
+  <div class="row ">
     <div class="search-hero">
-      <div class="input-group">
+      <div class="input-group mt-4">
         <input
           class="form-control"
           type="text"
           name="search"
           [(ngModel)]="x"
           autocomplete="off"
-          placeholder="Start searching for a product"
+          placeholder="search for a product"
         />
         <div class="input-group-prepend" style="cursor: pointer">
           <span class="input-group-text"
@@ -19,8 +19,8 @@
     </div>
   </div>
   <table
-    class="table table-active table-bordered align-middle col-8"
-    style="text-align: center"
+    class=" table-hover table-active table-bordered  align-middle col-9 "
+    style="text-align: center;width: 90%;"
   >
     <caption
       class="caption-top"
@@ -37,6 +37,7 @@
       <tr>
         <th rowspan="2">id</th>
         <th rowspan="2">Name</th>
+        <th rowspan="2">Image</th>
         <th rowspan="2">Price</th>
         <th rowspan="2">Sale</th>
         <th rowspan="2">Quantity</th>
@@ -57,6 +58,7 @@
           >
         </td>
         <td>{{ s.name }}</td>
+        <td> <img [src]="s.imgURL" class="w-75" alt=""></td>
         <td>{{ s.price }}</td>
         <td>{{ s.sale }}</td>
         <td>{{ s.quantity }}</td>
@@ -72,7 +74,7 @@
           >
         </td>
         <td (click)="delete(s.productId)">
-          <a routerLink="/products" class="btn btn-outline-dark">Delete</a>
+          <a routerLink="/products" class="btn btn-outline-danger">Delete</a>
         </td>
       </tr>
     </tbody>

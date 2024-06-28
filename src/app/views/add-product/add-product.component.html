@@ -1,75 +1,78 @@
-<h1 class="border-bottom border-dark">New Product</h1>
-<form [formGroup]="addProductForm" (ngSubmit)="submitForm()">
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Name: </label>
-    <input #name type="text" class="form-control" formControlName="Name" />
-  </div>
-  <div *ngIf="!nameValid" style="color: red">Product name is required</div>
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Price: </label>
-    <input #price type="text" class="form-control" formControlName="Price" />
-  </div>
-  <div *ngIf="!priceValid" style="color: red">
-    Price is required and must be a number with maximum two decimal digits
-  </div>
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Sale: </label>
-    <input #sale type="text" class="form-control" formControlName="Sale" />
-  </div>
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Description: </label>
-    <input
-      #description
-      type="text"
-      class="form-control"
-      formControlName="Description"
-    />
-  </div>
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Quantity: </label>
-    <input
-      #quantity
-      type="text"
-      class="form-control"
-      formControlName="Quantity"
-    />
-  </div>
-  <div *ngIf="!quantityValid" style="color: red">
-    Quantity is required and must be a number
-  </div>
+<h1 class=" border-dark ">Add New Product</h1>
+<div class="border border-2 shadow-lg w-75">
+  <form [formGroup]="addProductForm" (ngSubmit)="submitForm()">
+    <div class="form-group d-flex m-1 mt-3">
+      <label class="col-4">Name: </label>
+      <input placeholder="Name" #name type="text" class="form-control" formControlName="Name" />
+    </div>
+    <div *ngIf="!nameValid" style="color: red">Product name is required</div>
+    <div class="form-group d-flex m-1">
+      <label class="col-4">Price: </label>
+      <input #price type="text" class="form-control" formControlName="Price" />
+    </div>
+    <div *ngIf="!priceValid" style="color: red">
+      Price is required and must be a number with maximum two decimal digits
+    </div>
+    <div class="form-group d-flex m-1">
+      <label class="col-4">Sale: </label>
+      <input #sale type="text" class="form-control" formControlName="Sale" />
+    </div>
+    <div class="form-group d-flex m-1">
+      <label class="col-4">Description: </label>
+      <input
+        #description
+        type="text"
+        class="form-control"
+        formControlName="Description"
+      />
+    </div>
+    <div class="form-group d-flex m-1">
+      <label class="col-4">Quantity: </label>
+      <input
+        #quantity
+        type="text"
+        class="form-control"
+        formControlName="Quantity"
+      />
+    </div>
+    <div *ngIf="!quantityValid" style="color: red">
+      Quantity is required and must be a number
+    </div>
+  
+    <div class="form-group d-flex m-1">
+      <label class="col-4">Category: </label>
+      <select class="form-select form-select-sm mb-3"
+        #category
+        name="CategoryId"
+        formControlName="CategoryId"
+        (change)="getSelectedCateory($event)"
+      >
+        <option value="" disabled="disabled" selected="selected">
+          Choose Category
+        </option>
+        <option *ngFor="let item of categories" [value]="item.categoryId">
+          {{ item.categoryName }}
+        </option>
+      </select>
+    </div>
+    <div *ngIf="!categoryValid" style="color: red;background-color: rgb(249, 208, 208);" class=" w-25 ms-5 p-2">
+      You must choose a category!!!
+    </div>
+    <div class="form-group d-flex m-4">
+      <label class="col-4">Image: </label>
+      <input type="file" (change)="uploadFile($event)" formControlName="Image" />
+    </div>
+  
+    <div *ngIf="!imageValid" class="w-25 ms-5 p-2" style="color: red;background-color: rgb(249, 208, 208);">You must choose an image!!!</div>
+    <div class="form-group d-flex justify-content-center">
+      <button
+        type="submit"
+        [disabled]="addProductForm.invalid"
+        class="btn btn-outline-primary btn-block btn-lg m-4"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</div>
 
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Category: </label>
-    <select
-      #category
-      name="CategoryId"
-      formControlName="CategoryId"
-      (change)="getSelectedCateory($event)"
-    >
-      <option value="" disabled="disabled" selected="selected">
-        Choose Category
-      </option>
-      <option *ngFor="let item of categories" [value]="item.categoryId">
-        {{ item.categoryName }}
-      </option>
-    </select>
-  </div>
-  <div *ngIf="!categoryValid" style="color: red">
-    You must choose a category!!!
-  </div>
-  <div class="form-group d-flex m-4">
-    <label class="col-4">Image: </label>
-    <input type="file" (change)="uploadFile($event)" formControlName="Image" />
-  </div>
-
-  <div *ngIf="!imageValid" style="color: red">You must choose an image!!!</div>
-  <div class="form-group d-flex justify-content-center">
-    <button
-      type="submit"
-      [disabled]="addProductForm.invalid"
-      class="btn btn-outline-primary btn-block btn-lg m-4"
-    >
-      Add
-    </button>
-  </div>
-</form>
