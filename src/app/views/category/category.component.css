@@ -75,3 +75,7 @@ only screen and (max-width: 1398px),
 	}
 
 }
+
+.gg{
+	display: none;
+}

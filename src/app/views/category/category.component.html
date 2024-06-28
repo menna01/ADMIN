@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="">
+  <div class="border border-2 shadow-lg">
     <h2 style="color: black;">Add Category</h2>
     <div class="d-flex justify-content-start ">
-      <form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+      <form class="" [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
         <div>
           <label class="col-4 m-3">Category Name</label>
           <input
@@ -12,14 +12,96 @@
             [(ngModel)]="categoryName"
           />
         </div>
-        <div class=" d-flex justify-content-center">
-          <button
+        <div>
+          <input
+            class="col-5 m-3 rounded-2 border border-2 gg"
+            type="text"
+            formControlName="categoryImageURL"
+            [(ngModel)]="categoryImageURL"
+          />
+        </div>
+        <div class="form-group d-flex m-1">
+          <label class="col-4">Description: </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="description"
+            [(ngModel)]="description"
+
+
+          />
+        </div>
+
+        <div class=" mb-3 ">
+          <!-- [disabled]="addCategoryForm.invalid" -->
+
+          <button class=""
+          *ngIf="myreponse2"
             type="submit"
-            [disabled]="addCategoryForm.invalid"
             class="btn btn-outline-success ms-5  btn-block  "
-          > Add </button>
+          > Add Category</button>
         </div>
       </form>
+
+      <form class="mt-2"  style="display: flex;justify-content: space-between;" (ngSubmit)="submitAddForm(productForm)" [formGroup]="productForm">
+        <!-- <label for="name"> Name :</label> -->
+        <!-- <input  formControlName="name" type="text" class="form-control mb-2 input-mine" name=""> -->
+        <!-- <div *ngIf="productForm.get('name')?.errors && productForm.get('name')?.touched" class="alert alert-danger py-1"> -->
+            <!-- <p class="m-0" *ngIf="productForm.get('name')?.errors?.['required']"> name is required</p> -->
+            <!-- <p class="m-0" *ngIf="productForm.get('first_name')?.errors?.['minlength']">first name min length is 3</p>
+            <p class="m-0" *ngIf="productForm.get('first_name')?.errors?.['maxlength']">first name max length is 10</p> -->
+          <!-- </div> -->
+    
+    
+    
+    
+        <!-- <label for="description">description :</label> -->
+
+    
+
+
+    
+    
+  
+    
+      
+         
+    <div>
+      <!-- <label for="image">images :</label> -->
+          <!-- <img src="{{base64}}" alt=""> -->
+          <input id="fileInput" formControlName="image" type="file" class="form-control  input-mine" name="image">
+    </div>
+         
+          <!-- (change)="getImagePath($event) -->
+          
+          <!-- <div *ngIf="productForm.get('images')?.errors && productForm.get('images')?.touched" class="alert alert-danger py-2">
+              <p class="m-0" *ngIf="productForm.get('images')?.errors?.['required']">images required</p>
+              
+            </div> -->
+      
+          <div>
+            <button  type="submit" class="btn btn-light ms-4"  >
+              upload image
+                <!-- [disabled]="productForm.invalid" -->
+                <!-- <span *ngIf="!isloadind" >Add Product</span> -->
+                <!-- *ngIf="!isloadind" -->
+        
+                <!-- <i *ngIf="isloadind" class="fas fa-spinner fa-spin"></i> -->
+        
+        
+            </button>
+          </div>
+
+          <i *ngIf="myreponse2" class="fas fa-check-circle mt-3 ms-2 " style="color: green;"></i> 
+
+     
+        <!-- <div> <img [src]="myreponse2" alt="" class="w-10"></div> -->
+
+       
+    </form>
+
+
+     
     </div>
   </div>
   
@@ -53,14 +135,14 @@
     <tbody>
       <tr class="table-active" *ngFor="let c of categories">
         <td>{{ c.categoryId }}</td>
-        <td><img [src]="c.categoryImageURL" class="w-75" alt=""></td>
+        <td><img [src]="c.categoryImageURL" class="  " style="height: 150px;width: 150px;" alt=""></td>
 
         <td>{{ c.categoryName }}</td>
         <td>{{ c.description }}</td>
         <td>
           <a
             routerLink="/editCategory/{{ c.categoryId }}"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-success"
             >Edit</a
           >
         </td>

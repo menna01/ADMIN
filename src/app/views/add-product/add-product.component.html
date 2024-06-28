@@ -55,7 +55,7 @@
         </option>
       </select>
     </div>
-    <div *ngIf="!categoryValid" style="color: red;background-color: rgb(249, 208, 208);" class=" w-25 ms-5 p-2">
+    <div *ngIf="!categoryValid  && addProductForm.get('CategoryId')?.touched" style="color: red;background-color: rgb(249, 208, 208);" class=" w-25 ms-5 p-2">
       You must choose a category!!!
     </div>
     <div class="form-group d-flex m-4">
@@ -63,7 +63,7 @@
       <input type="file" (change)="uploadFile($event)" formControlName="Image" />
     </div>
   
-    <div *ngIf="!imageValid" class="w-25 ms-5 p-2" style="color: red;background-color: rgb(249, 208, 208);">You must choose an image!!!</div>
+    <div *ngIf="!imageValid && addProductForm.get('Image')?.touched" class="w-25 ms-5 p-2" style="color: red;background-color: rgb(249, 208, 208);">You must choose an image!!!</div>
     <div class="form-group d-flex justify-content-center">
       <button
         type="submit"

@@ -14,13 +14,38 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class CategoryComponent implements OnInit {
   addCategoryForm: FormGroup;
+  productForm:FormGroup = new FormGroup({
+    // images:new FormControl(null,[Validators.required])
+    image:new FormControl(null,[Validators.required])
+
+
+
+  })
+
+
   categoryName: any;
+  categoryImageURL:any;
+  description:any;
   constructor(public fb: FormBuilder, public myService: AdminService) {
     this.addCategoryForm = this.fb.group({
       categoryName: new FormControl('categoryName', [
         Validators.required,
         Validators.minLength(3),
       ]),
+      description:new FormControl('description',[
+        Validators.required
+
+
+      ]),
+      categoryImageURL: new FormControl('categoryImageURL', [
+        Validators.required
+        // Validators.minLength(3),
+      ]),
+      
+      // categoryImageURL:new FormControl('categoryImageURL',[
+      //   Validators.required
+      // ])
+
     });
   }
   categories: any;
@@ -51,16 +76,87 @@ export class CategoryComponent implements OnInit {
       );
     }
   }
+  // uploadFile(event: any) {
+  //   const file = (event.target as HTMLInputElement).files![0];
+  //   this.addCategoryForm.patchValue({
+  //     categoryImageURL: file,
+  //   });
+  //   this.addCategoryForm.get('categoryImageURL')!.updateValueAndValidity();
+  // }
+  // s
 
-  addCategory() {
-    let newCategory = { categoryName: this.categoryName };
-    this.myService.addCategory(newCategory).subscribe(
-      () => {
-        location.reload();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+myreponse:any;
+myreponse2:any;
+
+
+  submitAddForm(productForm:FormGroup){
+    // this.isloadind=true;
+
+const formData = new FormData();
+
+
+
+const fileInput=<HTMLInputElement>document.getElementById('fileInput');
+if(fileInput.files && fileInput.files.length>0){
+formData.append('image',fileInput.files[0]);
+
+}
+
+this.myService.addimage(formData).subscribe({
+next: (response) => {
+  
+console.log(response);
+this.myreponse=response;
+this.myreponse2=this.myreponse.imageUrl;
+localStorage.setItem('message',this.myreponse2)
+},
+error: (e) => {
+  console.log(e);
+}
+
+
+});
+
+
+
+  
+
+
+
+}
+
+
+addCategory() {
+  
+  let url=localStorage.getItem('message');
+  let newCategory = { categoryName: this.categoryName ,description:this.description,categoryImageURL:url};
+  localStorage.setItem('description',this.description)
+  this.myService.addCategory(newCategory).subscribe(
+    () => {
+      location.reload();
+      
+    },
+    (error) => {
+      console.log(error);
+    }
+    
+  );
+  
+  
+}
+
+
 }

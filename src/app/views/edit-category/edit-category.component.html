@@ -1,5 +1,151 @@
-<h1 class="border-bottom border-dark">Edit Category</h1>
+<h1 class="border-dark justify-content-center d-flex m-3">
+  Edit Category Info
+</h1>
+
+
+  
+
+<div class="border border-2 shadow-lg p-2">
+  <img src="{{ Image }}" class="col-4"  />
 <form [formGroup]="editCategoryForm">
+  <div class="form-group d-flex justify-content-start col-5  m-3 " >
+    <label class="col-3">Category Name: </label>
+    <input
+      #newCategoryName
+      type="text"
+      class="form-control "
+      formControlName="categoryName"
+      [value]="categoryName"
+    />
+
+
+  
+  </div>
+  <div class="form-group d-flex justify-content-start col-5 m-3">
+    <label class="col-3">description: </label>
+    <input
+      #newdescription
+      type="text"
+      class="form-control "
+      formControlName="desccription"
+      [value]="description"
+    />
+
+     
+
+
+  </div>
+  
+  <!-- <div class="form-group d-flex justify-content-center m-2">
+    <a
+      (click)="editCategory(newCategoryName.value)"
+      href="/category"
+      class="btn btn-outline-dark"
+      >Edit</a
+    >
+  </div> -->
+
+  
+  <div class="form-group d-flex justify-content-center ">
+
+     
+    <input
+      #newImage
+      class="form-control "
+      formControlName="Image"
+    
+      value="Edit"
+      (click)="editCategory(newCategoryName.value,newdescription.value)"
+      class="btn btn-outline-success"
+    />
+  </div>
+
+</form>
+</div>
+
+<!-- <div class="shadow-lg border border-2  ">
+  <div class="row justify-content-center d-flex m-4">
+    <img src="{{ Image }}" class="col-4" (click)="openFile()" />
+    <input type="file" (change)="fileChoosen($event)" id="input_file" hidden />
+    <a href = "http://localhost:4200/editProduct/{{ID}}" id='route' hidden></a>
+    <div class="col-5">
+      <form [formGroup]="editProductForm">
+        <div class="form-group d-flex">
+          <label class="col-3">Name: </label>
+          <input
+            #name
+            type="text"
+            class="form-control mb-1"
+            formControlName="name"
+            value="{{ Name }}"
+          />
+        </div>
+      
+      
+        <div class="form-group d-flex">
+          <label class="col-3">Description: </label>
+          <input
+            #description
+            type="text"
+            class="form-control mb-1"
+            formControlName="description"
+            value="{{ Description }}"
+          />
+        </div>
+        <div class="form-group d-flex m-4">
+      <label class="col-4">Category: </label> 
+      <select #category name="category"  (change)="getSelectedCateory($event)">
+        <option value="" disabled="disabled" selected="selected" >{{Category}}</option>
+        <option *ngFor="let item of categories"   [value]="item.categoryName">{{item.categoryName}}</option>
+     </select>
+    </div>
+  
+       
+        <div *ngIf="!categoryValid" style="color:red">
+      You must choose a category!!!
+    </div>
+        <div class="form-group d-flex justify-content-center m-2">
+          <input
+            type="submit"
+            value="Edit"
+            (click)="
+              Edit(
+                name.value,
+                description.value
+              
+              )
+            "
+            class="btn btn-outline-primary"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+<ng-template #loadingBlock>
+  <h1>Loading....</h1>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1 class="border-bottom border-dark">Edit Category</h1> -->
+<!-- <form [formGroup]="editCategoryForm">
   <div class="form-group d-flex">
     <label class="col-5">Category Name: </label>
     <input
@@ -10,6 +156,16 @@
       [value]="categoryName"
     />
   </div>
+  <div class="form-group d-flex">
+    <label class="col-5">Description: </label>
+    <input
+      #newCategoryName
+      type="text"
+      class="form-control"
+      formControlName="description"
+      [value]="description"
+    />
+  </div>
   <div class="form-group d-flex justify-content-center m-2">
     <input
       type="button"
@@ -18,12 +174,35 @@
       class="btn btn-outline-dark"
     />
   </div>
-  <!-- <div class="form-group d-flex justify-content-center m-2">
-    <a
-      (click)="editCategory(newCategoryName.value)"
-      href="/category"
-      class="btn btn-outline-dark"
-      >Edit</a
-    >
-  </div> -->
-</form>
+ 
+
+
+  
+</form> -->
+
+<!-- <div class="form-group">
+  <label for="image">Select Image:</label>
+  <input type="file" id="image" (change)="onFileSelected($event)" />
+</div>
+<button (click)="uploadFile()" class="btn btn-primary">Upload</button>
+
+<div *ngIf="uploadSuccess" class="alert alert-success">
+  <i class="fas fa-check-circle"></i> Image uploaded successfully!
+</div>
+<div *ngIf="uploadError" class="alert alert-danger">
+  Error uploading image!
+</div> -->
+
+
+<!-- <div class="form-group">
+  <label for="image">Select Image:</label>
+  <input type="file" id="image" (change)="onFileSelected($event)" />
+</div>
+<button (click)="uploadFile()" class="btn btn-primary">Upload</button>
+
+<div *ngIf="uploadSuccess" class="alert alert-success">
+  <i class="fas fa-check-circle"></i> {{ responseMessage }}
+</div>
+<div *ngIf="uploadError" class="alert alert-danger">
+  {{ responseMessage }}
+</div> -->

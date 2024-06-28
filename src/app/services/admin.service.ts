@@ -18,6 +18,7 @@ export class AdminService {
   private orderURL = 'https://localhost:7032/api/Orders';
   private userURL = 'https://localhost:7032/api/User';
   private categoryURL = 'https://localhost:7032/api/Category';
+  private ImageUrl = 'https://localhost:7032/api/Images';
 
   //Methods
 
@@ -40,9 +41,25 @@ export class AdminService {
     return this.myClient.patch(`${this.productURL}/${id}`, editedProduct);
   }
 
+  UpdateCategoryById(id: any, editedCategory: any) {
+    return this.myClient.patch(`${this.categoryURL}/${id}`, editedCategory);
+  }
+
+
   AddNewProduct(newProduct: any) {
     return this.myClient.post(this.productURL, newProduct);
   }
+////////////////
+
+  addimage(newIImage:any){
+    return this.myClient.post(this.ImageUrl,newIImage)
+  }
+
+  ////////////////////
+
+
+
+
 
   deleteProduct(id: any) {
     return this.myClient.delete(`${this.productURL}/${id}`);
@@ -103,9 +120,30 @@ export class AdminService {
     return this.myClient.delete(`${this.userURL}/${id}`);
   }
 
+
+
+
   UpdateProductImage(id: any, image: any) {
     return this.myClient.patch(`${this.productURL}/image/${id}`, image);
   }
+
+
+///function to update category image
+
+  UpdateCategoryImage(image: any) {
+    return this.myClient.patch(this.ImageUrl, image);
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   getImage(id: any) {
     // return this.myClient.get(this.BaseURL+"/"+id);
@@ -131,10 +169,14 @@ export class AdminService {
   addCategory(newCategory: any) {
     return this.myClient.post(this.categoryURL, newCategory);
   }
-  UpdateCategoryById(id: any, editedCategory: any) {
-    return this.myClient.patch(`${this.categoryURL}/${id}`, editedCategory);
-  }
 
+
+
+
+
+
+
+ 
   deleteCategory(id: any) {
     return this.myClient.delete(`${this.categoryURL}/${id}`);
   }

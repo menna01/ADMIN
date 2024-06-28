@@ -90,9 +90,7 @@ export class EditProductComponent implements OnInit {
     });
     this.getSelectedCateory(event);
   }
-
  
-
   Edit(
     name: any,
     price: any,
@@ -101,10 +99,9 @@ export class EditProductComponent implements OnInit {
     description: any,
     category: any
   ) {
-
-    //  categoryName = this.categories.find((obj:any) => obj.categoryName == this.Category)?.categoryId;
+    // Construct the updated product object
     let product = {
-      productId: this.ID,
+      productId: this.ID, // Assuming this.ID is defined somewhere
       name,
       price,
       sale,
@@ -112,12 +109,61 @@ export class EditProductComponent implements OnInit {
       description,
       categoryId: category,
     };
-    localStorage.setItem("name",product.name)
-    this.myService.UpdateProductByID(this.ID, product).subscribe(() => {
-      this.router.navigate(['/products']);
-    });
-    //  console.log(this.Category);
+  
+    // Set 'name' to local storage - Verify if this is the intended action
+    localStorage.setItem("name", product.name);
+  
+    // Call the service method to update the product
+    this.myService.UpdateProductByID(this.ID, product).subscribe(
+      () => {
+        // Navigate to the products page after a successful update
+        this.router.navigate(['/products']);
+      },
+      error => {
+        // Handle any errors here
+        console.error('Error updating product:', error);
+        // Optionally, you can add user-friendly error handling or display messages
+        // Example: this.errorMessage = 'Failed to update product. Please try again.';
+      }
+    );
   }
+ 
+
+  // Edit(
+  //   name: any,
+  //   price: any,
+  //   sale: any,
+  //   quantity: any,
+  //   description: any,
+  //   category: any
+  // ) {
+
+  //   //  categoryName = this.categories.find((obj:any) => obj.categoryName == this.Category)?.categoryId;
+  //   let product = {
+  //     productId: this.ID,
+  //     name,
+  //     price,
+  //     sale,
+  //     quantity,
+  //     description,
+  //     categoryId: category,
+  //   };
+  //   localStorage.setItem("name",product.name)
+  //   // this.myService.UpdateProductByID(this.ID, product).subscribe(() => {
+  //   //   this.router.navigate(['/products']);
+  //   // });
+  //   this.myService.UpdateProductByID(this.ID, product).subscribe(
+  //         () => {
+  //           // Navigate to the products page after a successful update
+  //           this.router.navigate(['/products']);
+  //         },
+  //         error => {
+  //           // Handle any errors here
+  //           console.error('Error updating product:', error);
+  //         }
+  //       );
+  //   //  console.log(this.Category);
+  // }
   // Edit(
   //   name: any,
   //   price: any,
