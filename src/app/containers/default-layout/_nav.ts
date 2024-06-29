@@ -37,10 +37,10 @@ export const navItems: INavData[] = [
     
   },
   
-  {
-    title: true,
-    name: 'Extras'
-  },
+  // {
+  //   title: true,
+  //   name: 'Extras'
+  // },
 ];
 
 
